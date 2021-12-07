@@ -1,4 +1,5 @@
 import FilaEspacios from "./FilaEspacios";
+import { FormattedMessage } from "react-intl";
 
 function Espacios(props) {
   let espacios = [];
@@ -16,13 +17,19 @@ function Espacios(props) {
 
   return (
     <div>
-      {espacios.map((datos_fila, i) => (
-        <FilaEspacios
-          key={i}
-          data={datos_fila}
-          setIdActual={props.setIdActual}
-        />
-      ))}
+      {props.conexion &&
+        espacios.map((datos_fila, i) => (
+          <FilaEspacios
+            key={i}
+            data={datos_fila}
+            setIdActual={props.setIdActual}
+          />
+        ))}
+      {!props.conexion && (
+        <h2>
+          <FormattedMessage id="No conection" />
+        </h2>
+      )}
     </div>
   );
 }

@@ -1,12 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { IntlProvider } from "react-intl";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import Main from "./components/Main";
+import localeEsMessages from "./locales/es.json";
+import localeEnMessages from "./locales/en.json";
+
+let lang = navigator.language || navigator.userLanguage;
+let mensajes = null;
+if (lang.startsWith("es")) {
+  mensajes = localeEsMessages;
+} else if (lang.startsWith("en")) {
+  mensajes = localeEnMessages;
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <Main />
+    <IntlProvider locale={lang} messages={mensajes}>
+      <Main />
+    </IntlProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

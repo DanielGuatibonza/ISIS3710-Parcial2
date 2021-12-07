@@ -1,4 +1,5 @@
 import Dispositivo from "./Dispositivo";
+import { FormattedMessage } from "react-intl";
 
 function TablaDispositivos(props) {
   return (
@@ -7,8 +8,12 @@ function TablaDispositivos(props) {
         <tr>
           <th scope="col">#</th>
           <th scope="col">ID</th>
-          <th scope="col">Device</th>
-          <th scope="col">Value</th>
+          <th scope="col">
+            <FormattedMessage id="Device" />
+          </th>
+          <th scope="col">
+            <FormattedMessage id="Value" />
+          </th>
         </tr>
       </thead>
       <tbody>
